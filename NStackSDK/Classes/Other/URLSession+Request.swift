@@ -135,12 +135,12 @@ extension URLSession {
     }
 
     private func validate(_ data: Data?, _ response: URLResponse?, _ error: Error?) throws -> Data {
-        // FIXME: Finish this
-        guard let response = response as? HTTPURLResponse else {
+        guard let response = response as? HTTPURLResponse,
+                let statusCode = HTTPStatusCode(rawValue: response.statusCode) else {
             throw NSError(domain: "", code: 0, userInfo: nil)
         }
-
-        switch HTTPStatusCode(rawValue: response.statusCode)! {
+        
+        switch statusCode {
         case .ok, .created: // Success
             guard let data = data else {
                 throw NSError(domain: "", code: 0, userInfo: nil)

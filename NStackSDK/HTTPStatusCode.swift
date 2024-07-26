@@ -65,6 +65,7 @@ enum HTTPStatusCode: Int {
     case preconditionRequired = 428
     case tooManyRequests
     case requestHeaderFieldsTooLarge = 431
+    case alreadyAnswered = 445
     case unavailableForLegalReasons = 451
 
     // 500 Server Error
